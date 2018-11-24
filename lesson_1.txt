@@ -1,0 +1,69 @@
+public class MainClass {
+    public static void main(String[] args) {
+        Participant[] participants = {new Human("Bob"), new Cat("Barsik"), new Dog("Bobik")};
+        Obstacle[] obstacles = {new Cross(200), new Water(20), new Wall(2), new Cross(500)};
+
+        Course c = new Course(obstacles); // Создаем полосу препятствий
+        Team team = new Team("Победители", participants); // Создаем команду
+        team.printParticiants();//участники
+        c.doIt(team); // Просим команду пройти полосу
+        team.showResults(); // Показываем результаты
+
+    }
+}
+
+public class Team {
+    private String teamName;
+    Participant[] participants;
+
+    public Participant[] getParticipants() {
+        return participants;
+    }
+
+
+
+    public Team (String teamName, Participant[] participants){
+        this.teamName = teamName;
+        this.participants = participants;
+    }
+
+    public void printParticiants(){
+        System.out.println("Cостав команды " + teamName + ":");
+        for (Participant participant: participants){
+            System.out.println(participant.getName());
+        }
+    }
+
+    public void showResults(){
+        System.out.println("Из команды " + teamName + " дистанцию прошли:");
+        for (Participant participant: participants){
+            if(participant.isActive()) {
+                System.out.println(participant.getName());
+            }
+        }
+    }
+
+
+}
+
+public class Course {
+    Obstacle[] obstacles;
+
+    public Course(Obstacle[] obstacles){
+        this.obstacles = obstacles;
+    }
+
+    public void doIt(Team team){
+        System.out.println("\nСоревнования начались!");
+        for (Participant participant: team.getParticipants()){
+              for (Obstacle obstacle: obstacles){
+                obstacle.doIt(participant);
+                if(!participant.isActive()){
+                    break;
+                }
+            }
+        }
+        System.out.println("Соревнования завершились!\n");
+    }
+
+}
