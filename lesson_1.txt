@@ -1,13 +1,13 @@
-public class MainClass {
+п»їpublic class MainClass {
     public static void main(String[] args) {
         Participant[] participants = {new Human("Bob"), new Cat("Barsik"), new Dog("Bobik")};
         Obstacle[] obstacles = {new Cross(200), new Water(20), new Wall(2), new Cross(500)};
 
-        Course c = new Course(obstacles); // Создаем полосу препятствий
-        Team team = new Team("Победители", participants); // Создаем команду
-        team.printParticiants();//участники
-        c.doIt(team); // Просим команду пройти полосу
-        team.showResults(); // Показываем результаты
+        Course c = new Course(obstacles); // РЎРѕР·РґР°РµРј РїРѕР»РѕСЃСѓ РїСЂРµРїСЏС‚СЃС‚РІРёР№
+        Team team = new Team("РџРѕР±РµРґРёС‚РµР»Рё", participants); // РЎРѕР·РґР°РµРј РєРѕРјР°РЅРґСѓ
+        team.printParticiants();//СѓС‡Р°СЃС‚РЅРёРєРё
+        c.doIt(team); // РџСЂРѕСЃРёРј РєРѕРјР°РЅРґСѓ РїСЂРѕР№С‚Рё РїРѕР»РѕСЃСѓ
+        team.showResults(); // РџРѕРєР°Р·С‹РІР°РµРј СЂРµР·СѓР»СЊС‚Р°С‚С‹
 
     }
 }
@@ -28,14 +28,14 @@ public class Team {
     }
 
     public void printParticiants(){
-        System.out.println("Cостав команды " + teamName + ":");
+        System.out.println("CРѕСЃС‚Р°РІ РєРѕРјР°РЅРґС‹ " + teamName + ":");
         for (Participant participant: participants){
             System.out.println(participant.getName());
         }
     }
 
     public void showResults(){
-        System.out.println("Из команды " + teamName + " дистанцию прошли:");
+        System.out.println("РР· РєРѕРјР°РЅРґС‹ " + teamName + " РґРёСЃС‚Р°РЅС†РёСЋ РїСЂРѕС€Р»Рё:");
         for (Participant participant: participants){
             if(participant.isActive()) {
                 System.out.println(participant.getName());
@@ -54,7 +54,7 @@ public class Course {
     }
 
     public void doIt(Team team){
-        System.out.println("\nСоревнования начались!");
+        System.out.println("\nРЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ РЅР°С‡Р°Р»РёСЃСЊ!");
         for (Participant participant: team.getParticipants()){
               for (Obstacle obstacle: obstacles){
                 obstacle.doIt(participant);
@@ -63,7 +63,7 @@ public class Course {
                 }
             }
         }
-        System.out.println("Соревнования завершились!\n");
+        System.out.println("РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ Р·Р°РІРµСЂС€РёР»РёСЃСЊ!\n");
     }
 
 }
