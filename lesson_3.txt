@@ -1,0 +1,65 @@
+﻿public class Main {
+    public static void main(String[] Args){
+
+        // Задание 1
+        List<String> wordsList = Arrays.asList("five", "five", "one", "two" , "three", "four", "five", "six", "seven", "eight", "nine", "one", "one", "one", "six", "six");
+        HashSet<String> wordsHashList = new HashSet(wordsList);
+        System.out.println("Список уникальных слов: " + wordsHashList);
+
+        HashMap<String, Integer> wordsCount = new HashMap<>();
+
+        for (String wordFirst: wordsHashList){
+            int count = 0;
+            for (String wordSecond: wordsList){
+                count += (wordFirst.equals(wordSecond)) ? 1 : 0;
+            }
+            wordsCount.put(wordFirst, count);
+        }
+
+        System.out.println("Количество повторяющихся слов: " + wordsCount);
+
+
+        // Задание 2
+
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("+79112222221", "Ivanov");
+        phoneBook.add("+79112222222", "Pupkin");
+        phoneBook.add("+79112222223", "Sidorov");
+        phoneBook.add("+79112222224", "Medvedev");
+        phoneBook.add("+79112222225", "Zaytcev");
+        phoneBook.add("+79112222226", "Pronin");
+        phoneBook.add("+79112222231", "Sobolev");
+        phoneBook.add("+79112222228", "Zadov");
+        phoneBook.add("+79112222228", "Zadov2");
+        phoneBook.add("+79112222229", "Ivanov");
+        phoneBook.add("+79112222230", "Ivanov");
+
+
+        String surname = "Ivanov";
+        HashMap<String, String> phoneNumbers = phoneBook.get(surname);
+        System.out.println("Номера телефонов людей с фамилией " + surname + ":");
+        for (Map.Entry<String, String> phoneNumber: phoneNumbers.entrySet()){
+            System.out.println(phoneNumber.getKey());
+        }
+
+   }
+
+}
+
+public class PhoneBook {
+    private HashMap<String, String> phoneBook = new HashMap<>();
+
+    public void add(String phoneNumber, String Surname){
+         phoneBook.put(phoneNumber, Surname);
+    }
+
+    public HashMap<String, String> get(String Surname) {
+        HashMap<String, String> returnValues = new HashMap<>();
+        for (HashMap.Entry<String, String> value : phoneBook.entrySet()){
+            if (value.getValue().equals(Surname)) {
+                returnValues.put(value.getKey(), Surname);
+            }
+        }
+        return returnValues;
+    }
+}
