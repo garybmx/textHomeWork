@@ -1,4 +1,4 @@
-sample.fxml
+ï»¿sample.fxml
 
 <VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center"
       stylesheets="@style.css">
@@ -9,12 +9,12 @@ sample.fxml
     </VBox>
     <HBox fx:id="hbox">
 
-        <TextField onAction="#btnSendText" fx:id="textField" HBox.hgrow="ALWAYS" promptText="Ââåäèòå çäåñü âàøå âîîáùåíèå..." maxWidth="Infinity" >
+        <TextField onAction="#btnSendText" fx:id="textField" HBox.hgrow="ALWAYS" promptText="Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð´ÐµÑÑŒ Ð²Ð°ÑˆÐµ Ð²Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ..." maxWidth="Infinity" >
             <HBox.margin>
                 <Insets left="5.0" right="5.0"/>
             </HBox.margin>
         </TextField>
-        <Button onAction="#btnSendText" text="Îòïðàâèòü" fx:id="buttonSend" lineSpacing="15" >
+        <Button onAction="#btnSendText" text="ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ" fx:id="buttonSend" lineSpacing="15" >
             <HBox.margin>
                 <Insets right="5.0"/>
             </HBox.margin>
