@@ -1,0 +1,49 @@
+sample.fxml
+
+<VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center"
+      stylesheets="@style.css">
+    <TextArea fx:id="textArea" VBox.vgrow="ALWAYS" editable="false" wrapText="true"   >
+
+    </TextArea>
+    <VBox minHeight="5">
+    </VBox>
+    <HBox fx:id="hbox">
+
+        <TextField onAction="#btnSendText" fx:id="textField" HBox.hgrow="ALWAYS" promptText="¬ведите здесь ваше вообщение..." maxWidth="Infinity" >
+            <HBox.margin>
+                <Insets left="5.0" right="5.0"/>
+            </HBox.margin>
+        </TextField>
+        <Button onAction="#btnSendText" text="ќтправить" fx:id="buttonSend" lineSpacing="15" >
+            <HBox.margin>
+                <Insets right="5.0"/>
+            </HBox.margin>
+        </Button>
+    </HBox>
+    <VBox minHeight="5">
+    </VBox>
+
+</VBox>
+
+
+public class Controller {
+    @FXML
+    Button buttonSend;
+
+    @FXML
+    TextField textField;
+
+    @FXML
+    TextArea textArea;
+
+    String chatText;
+
+
+    public void btnSendText(ActionEvent actionEvent){
+        if(textField.getText().equals("")) return;
+        chatText = textArea.getText();
+        textArea.setText(chatText + textField.getText() + "\n");
+        textField.clear();
+    }
+
+}
