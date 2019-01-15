@@ -1,0 +1,121 @@
+﻿//1. Написать метод, который меняет два элемента массива местами (массив может быть любого ссылочного типа);
+    public static <T> T[] invert(T[] arr, int firstIndex, int secondIndex){
+        if(firstIndex < 0 || secondIndex < 0 || firstIndex > arr.length || secondIndex > arr.length) return arr;
+        T temp = arr[firstIndex];
+        arr[firstIndex] = arr[secondIndex];
+        arr[secondIndex] = temp;
+        return arr;
+    }
+
+//2. Написать метод, который преобразует массив в ArrayList;
+    public static <T> ArrayList<T> convert(T[] arr){
+        ArrayList<T> arrayList = new ArrayList<>();
+        for (T elemet: arr) {
+            arrayList.add(elemet);
+        }
+        return arrayList;
+}
+
+//3.
+public class Fruit {
+    private float weight;
+    private String type;
+
+
+    public Fruit(float weight, String type) {
+        this.weight = weight;
+        this.type = type;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+}
+
+public class Apple extends Fruit {
+    public Apple(float weight) {
+        super(weight, "Яблоки");
+    }
+}
+
+public class Orange extends Fruit {
+    public Orange(float weight) {
+        super(weight, "Апельсины");
+    }
+}
+
+public class Box<T extends Fruit> implements Comparable<Box>  {
+
+    public ArrayList<T> getBoxItems() {
+        return boxItems;
+    }
+
+    private ArrayList<T> boxItems;
+
+
+    Box(){
+        boxItems = new ArrayList<>();
+    
+    }
+
+    public boolean addItem(T item){
+        if(!boxItems.isEmpty()){
+            if(!item.getType().equals(boxItems.get(0).getType())){
+                System.out.println("Неподходящий тип фруктов");
+                return false;
+            }
+        }
+        boxItems.add(item);
+        return true;
+    }
+
+    public void addFruitsFromBox(Box<T> anotherBox) {
+        Iterator iterator = anotherBox.getBoxItems().iterator();
+
+        while (iterator.hasNext()) {
+            T fruit = (T) iterator.next();
+            if (addItem(fruit)) {
+                iterator.remove();
+            } else return;
+
+        }
+    }
+
+    public float getWeight(){
+        float sumWeight = 0.0f;
+        for (T item: boxItems){
+            sumWeight += item.getWeight();
+        }
+        return sumWeight;
+    }
+
+    @Override
+    public int compareTo(Box anotherBox){
+        if (getWeight() > anotherBox.getWeight()){
+            System.out.println("Первая коробка больше второй");
+            return 1;
+        }
+        else if(getWeight() < anotherBox.getWeight()){
+            System.out.println("Вторая коробка больше первой");
+            return -1;
+        }
+        else {
+            System.out.println("Коробки равны");
+            return 0;
+        }
+
+    }
+
+}
